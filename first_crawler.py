@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import matplotlib.pyplot as plt
+from matplotlib import font_manager, rc
 
 URL1 = 'http://www.index.go.kr/unify/idx-info.do?idxCd=8005'
 URL2 = 'http://www.index.go.kr/unify/idx-info.do?idxCd=8086'
@@ -43,6 +44,10 @@ y1.extend([1860, 1830, 1840, 1820, 1750, 1760, 1730, 1670, 1630])
 y2.extend([2832, 2900, 2998, 3083, 3260, 3391, 3493, 3531, 3528])
 y3.extend([2799, 2899, 2995, 3095, 3260, 3411, 3589, 3693, 3744])
 
+plt.rcParams["axes.unicode_minus"] = False
+path = "C:/Windows/Fonts/Arial.TTF"
+font_name = font_manager.FontProperties(fname=path).get_name()
+rc("font",family=font_name)
 plt.plot(x, y1, color='b')
 plt.plot(x, y2, color = 'g')
 plt.plot(x, y3, color = 'r')
