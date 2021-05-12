@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+import matplotlib.pyplot as plt
 
 URL1 = 'http://www.index.go.kr/unify/idx-info.do?idxCd=8005'
 URL2 = 'http://www.index.go.kr/unify/idx-info.do?idxCd=8086'
@@ -33,10 +34,17 @@ for item in contents3:
     text3 = text3 + item.get_text()
 print(text3)
 
-x1=[]
-x2=[]
-x3=[]
+y1=[]
+y2=[]
+y3=[]
+x=[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 
-x1.append(18.6, 18.3, 18.4, 18.2, 17.5, 17.6, 17.3, 16.7, 16.3)
-x2.append(2832, 2900, 2998, 3083, 3260, 3391, 3493, 3531, 3528)
-x3.append(2799, 2899, 2995, 3095, 3260, 3411, 3589, 3693, 3744)
+y1.extend([1860, 1830, 1840, 1820, 1750, 1760, 1730, 1670, 1630])
+y2.extend([2832, 2900, 2998, 3083, 3260, 3391, 3493, 3531, 3528])
+y3.extend([2799, 2899, 2995, 3095, 3260, 3411, 3589, 3693, 3744])
+
+plt.plot(x, y1, color='b')
+plt.plot(x, y2, color = 'g')
+plt.plot(x, y3, color = 'r')
+plt.suptitle('상대적 빈곤율 및 1인당 국민총소득')
+plt.show()
